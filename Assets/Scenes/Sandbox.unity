@@ -821,7 +821,7 @@ MonoBehaviour:
   debugging: 0
   currentSpeed: 0
   moveSpeed: 300
-  jumpForce: 5
+  jumpForce: 8
   sprintSpeed: 400
 --- !u!54 &1420468883
 Rigidbody:
