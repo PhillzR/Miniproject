@@ -4,7 +4,7 @@
 **Project Name:** Garfield ...but worse
 <br> **Name:** Phillip Rumpelthiin
 
-## Overview of the Game:
+## Overview of the Game
 I have chosen to try to somewhat replicate the Garfield game. The premise of the original game is you play as Garfield and have to clean up the house before Jon gets home, otherwise you won't get lasagna. You have a vaccum to vacuum up objects and blow them out on their right places again, that's the core loop of the game - and what i'll focus on. 
 
 **Game features:** 
@@ -44,7 +44,8 @@ In terms of models i have only used primitives.
 ## Time Management
 Insert picture here
 
-## Used Resources: 
+## Used Resources
+None other than what i already know or have looked up in my own projects. 
 
 
 
