@@ -29,6 +29,8 @@ In terms of models i have only used primitives.
 * PlayerMaterial
 * ObjectMaterial
 * SilhouetteShaderMaterial
+* Ground
+* Skybox
 
 **Scenes:** 
 * Sandbox
