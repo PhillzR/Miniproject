@@ -10,8 +10,7 @@ I have chosen to try to somewhat replicate the Garfield game. The premise of the
 **Game features:** 
 * Player 
 * Camera 
-* Objects to vacuum 
-* GUI to see vacuumed objects 
+* Objects to vacuum and place
 * Visual effect (shadergraph shader) to show where the objects should be placed 
 
 ### Project Parts:
@@ -38,7 +37,8 @@ In terms of models i have only used primitives.
 
 ### Features I ran out of time to implement: 
 * Enemy: Odie that follows the player around and is occasionally annoying by walking into you.
-* Jumping mechanic, I had trouble with the physics because i set the linear velocity on the y axis to 0 in update. Didn't find a fix in time.  
+* Jumping mechanic, I had trouble with the physics because i set the linear velocity on the y axis to 0 in update. Didn't find a fix in time.
+* GUI to see vacuumed objects 
 
 ## Time Management
 Insert picture here
