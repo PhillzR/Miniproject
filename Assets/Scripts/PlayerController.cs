@@ -1,4 +1,5 @@
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 300f;
     [SerializeField] float jumpForce = 2f;
     [SerializeField] float sprintSpeed = 400f;
+    [SerializeField] float vacuumRange = 20f;
+    [SerializeField] float vacuumSpeed = 4f;
     
     /* Does not work yet, needs to get set up. 
     [SerializeField] float verticalSensitivity;
@@ -17,12 +20,15 @@ public class PlayerController : MonoBehaviour
     */
 
     Rigidbody rb;
+    Transform targetTransform;
     CinemachineVirtualCamera playerCamera;
     Vector2 move;
     float moveX;
     float moveY;
     bool isSprinting;
     bool isJumping = false;
+    bool isGrounded = false;
+    bool isVacuuming = false;
 
 
 
@@ -50,6 +56,7 @@ public class PlayerController : MonoBehaviour
         Look();
         Sprint(isSprinting);
         Jump();
+        Vacuum();
 
     }
 
@@ -62,9 +69,7 @@ public class PlayerController : MonoBehaviour
 
     void Move() 
     {
-        Vector3 movement = rb.linearVelocity;
-        movement.x = moveX;
-        movement.y = moveY;
+        Vector3 movement = new Vector3(moveX, 0f, moveY);
         Vector3 transformMove = transform.TransformVector(movement);
         rb.linearVelocity = transformMove * currentSpeed * Time.deltaTime;
     }
@@ -106,6 +111,39 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
     }
 
+    public void OnVacuum()
+    {
+        isVacuuming = !isVacuuming;
+    }
+
+    void Vacuum()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, vacuumRange) && hit.transform.tag == "ObjectToPickUp" && isVacuuming)
+        {
+            Transform target = hit.transform.GetComponent<Transform>();
+            targetTransform = target.transform;
+
+            var step = vacuumSpeed * Time.deltaTime;
+            targetTransform.position = transform.position;
+            targetTransform.gameObject.SetActive(false);
+            isVacuuming = false;
+            //Debug.DrawLine(transform.position, hit.point, Color.yellow);
+        }
+        else if (Physics.Raycast(transform.position, transform.forward, out hit, vacuumRange) && hit.transform.tag == "ObjectToPlace" && isVacuuming)
+        {
+            Transform objectPlacement = hit.transform.GetComponent<Transform>();
+
+            targetTransform.gameObject.SetActive(true);
+            targetTransform.position = objectPlacement.position;
+            objectPlacement.GetComponent<MeshRenderer>().enabled = false;
+            
+            isVacuuming = false;
+
+        }
+    }
+
     void DebugMovement(bool debugging)
     {
         if (debugging)
@@ -116,6 +154,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
+
     }
 
 }
