@@ -17,7 +17,6 @@ I have chosen to try to somewhat replicate the Garfield game. The premise of the
 ### Project Parts:
 **Scripts:** 
 * PlayerController
-* 
 
 **Models & Prefabs:**
 In terms of models i have only used primitives. 
