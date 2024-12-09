@@ -35,7 +35,7 @@ In terms of models i have only used primitives.
 * Sandbox
 
 **Testing:**
-The game is only tested on a windows pc. 
+<br> The game is only tested on a windows pc. 
 
 ### Features I ran out of time to implement: 
 * Enemy: Odie that follows the player around and is occasionally annoying by walking into you.
