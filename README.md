@@ -13,7 +13,6 @@ I have chosen to try to somewhat replicate the Garfield game. The premise of the
 * Objects to vacuum 
 * GUI to see vacuumed objects 
 * Visual effect (shadergraph shader) to show where the objects should be placed 
-* Enemy: Odie that follows the player around and is occasionally annoying by walking into you 
 
 ### Project Parts:
 **Scripts:** 
@@ -21,13 +20,25 @@ I have chosen to try to somewhat replicate the Garfield game. The premise of the
 * 
 
 **Models & Prefabs:**
+In terms of models i have only used primitives. 
+<br> Prefabs in the game: 
+* Player
+* Object to pick up
+* Object with silhouette shader
 
 **Materials:**
+* PlayerMaterial
+* ObjectMaterial
+* SilhouetteShaderMaterial
 
 **Scenes:** 
+* Sandbox
 
 **Testing:**
+The game is only tested on a windows pc. 
 
+### Features I ran out of time to implement: 
+* Enemy: Odie that follows the player around and is occasionally annoying by walking into you.
 
 ## Time Management
 Insert picture here
