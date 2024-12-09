@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 2f;
     [SerializeField] float sprintSpeed = 400f;
     [SerializeField] float vacuumRange = 20f;
-    [SerializeField] float vacuumSpeed = 4f;
     
     /* Does not work yet, needs to get set up. 
     [SerializeField] float verticalSensitivity;
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
     float moveY;
     bool isSprinting;
     bool isJumping = false;
-    bool isGrounded = false;
     bool isVacuuming = false;
 
 
@@ -56,7 +54,6 @@ public class PlayerController : MonoBehaviour
         Look();
         Sprint(isSprinting);
         Jump();
-        Vacuum();
 
     }
 
@@ -114,28 +111,29 @@ public class PlayerController : MonoBehaviour
     public void OnVacuum()
     {
         isVacuuming = !isVacuuming;
+        Vacuum();
     }
 
     void Vacuum()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, vacuumRange) && hit.transform.tag == "ObjectToPickUp" && isVacuuming)
+        if (Physics.Raycast(transform.position, playerCamera.transform.forward, out hit, vacuumRange) && hit.transform.tag == "ObjectToPickUp" && isVacuuming)
         {
             Transform target = hit.transform.GetComponent<Transform>();
             targetTransform = target.transform;
 
-            var step = vacuumSpeed * Time.deltaTime;
             targetTransform.position = transform.position;
             targetTransform.gameObject.SetActive(false);
             isVacuuming = false;
             //Debug.DrawLine(transform.position, hit.point, Color.yellow);
         }
-        else if (Physics.Raycast(transform.position, transform.forward, out hit, vacuumRange) && hit.transform.tag == "ObjectToPlace" && isVacuuming)
+        else if (Physics.Raycast(transform.position, playerCamera.transform.forward, out hit, vacuumRange) && hit.transform.tag == "ObjectToPlace" && isVacuuming)
         {
             Transform objectPlacement = hit.transform.GetComponent<Transform>();
 
             targetTransform.gameObject.SetActive(true);
+            targetTransform.tag = "Untagged";
             targetTransform.position = objectPlacement.position;
             objectPlacement.GetComponent<MeshRenderer>().enabled = false;
             
