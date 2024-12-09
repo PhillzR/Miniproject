@@ -23,6 +23,7 @@ In terms of models i have only used primitives.
 * Player
 * Object to pick up
 * Object with silhouette shader
+* Player Camera
 
 **Materials:**
 * PlayerMaterial
