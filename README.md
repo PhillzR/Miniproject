@@ -12,10 +12,6 @@ I have chosen to try to somewhat replicate the Garfield game. The premise of the
 *	Camera - The player is able to look around with the use of a cinemachine virtual camera with the Player gameobject as Follow and Look At target. The Body is set as Transposer and Aim as POV.
 *	Objects to vacuum and place - Some primitives with a material, collider and a tag making the player able to pick it up and place it with the use of raycasting.
 *	Some obstacles to push around - just some primitives with a collider and a rigidbody component and the mass lower than the players. They all have the same material. 
-- Domino bricks
-- A big box
-- A small box
-- A big sphere
 *	Visual Effect (Shadergraph shader) to show where the objects should be placed. Just a simple shader using a Time node with Sine Time and a Smoothstep node to make the objects size/scaling “pulse”, a variable for transparency set to 0.8 and a base color. 
 
 
