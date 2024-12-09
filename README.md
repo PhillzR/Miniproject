@@ -39,6 +39,7 @@ In terms of models i have only used primitives.
 
 ### Features I ran out of time to implement: 
 * Enemy: Odie that follows the player around and is occasionally annoying by walking into you.
+* Jumping mechanic, I had trouble with the physics because i set the linear velocity on the y axis to 0 in update. Didn't find a fix in time.  
 
 ## Time Management
 Insert picture here
